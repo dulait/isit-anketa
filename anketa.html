@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="anketa.css">
   <title>Anketa</title>
 </head>
@@ -11,40 +11,28 @@
 <body>
   <form action="connect.php" method="POST" id="survey-form">
     <div class="container">
-      <h2>Anketa za studente</h2>
+      <h2>Anketa za ISiT</h2>
     </div>
     <p>
-      Pozdrav svim studentima,<br><br>
-      U ime tima koji sprovodi ovu anketu, želimo da vam se zahvalimo na učešću u istraživanju, koje ima za cilj
-      prikupljanje osnovnih podataka o vašem studiranju.
-      Anketa je namenjena za prikupljanje informacija o vašem studiranju kako bismo bolje razumeli izazove sa kojima se
-      suočavate tokom studiranja.<br><br>
-      Obezbedili smo sigurno i poverljivo okruženje za prikupljanje podataka. Podaci koje prikupljamo biće obrađivani i
-      prikazani anonimno, bez otkrivanja bilo kojih
-      ličnih informacija o vama kao pojedincu. Podaci koje prikupljamo koristiće se isključivo u okviru istraživanja i
-      neće se koristiti u bilo koje druge svrhe.<br><br>
-      Na kraju istraživanja, rezultati će biti javno dostupni na GitHub sajtu, sa celokupnom dokumentacijom koja ide uz
-      projekat. Ovako je omogućeno svim zainteresovanim
-      stranama da učestvuju u procesu analize i interpretacije podataka.<br><br>
-      Još jednom, hvala vam što ste izdvojili vreme da popunite ovu anketu.<br><br>
+      Dragi studenti,<br><br>
+      Dobrodošli na našu anketu o studiranju! Ovaj projekat ima za cilj prikupljanje podataka, kao što su uzrast, godina studija, 
+      ocene i slično, o studentima koji studiraju na ISiT smeru FON-a. Vaše učešće u anketi je dragoceno za naše istraživanje, pri čemu 
+      garantujemo potpunu anonimnost i privatnost vaših podataka.<br><br>
+      Anketa će vam oduzeti samo nekoliko minuta, a rezultati će biti iskorišćeni isključivo u svrhe istraživanja. Rezultati će, 
+      zajedno sa izvornim kodom, biti javno dostupni na GitHub-u, jer je ovaj projekat deo open-source inicijative.<br><br>
+      Molimo vas da iskreno odgovorite na sva pitanja, kako bi rezultati ankete bili precizniji. Hvala vam što ste izdvojili 
+      vreme da učestvujete u anketi.<br><br>
       - Dušan Drašković, 2021/1096
       <hr>
     </p>
 
     <fieldset>
       <!--Prvi set pitanja-->
-      <legend>Korak 1 od 5: Molimo vas da popunite vaše lične informacije</legend>
-
-      <div class="input-group">
-        <label for="ime">Ime i prezime:</label>
-        <input type="text" id="ime" name="ime" pattern="^[\p{L}\s]+$"
-          onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32) || (event.charCode >= 1025 && event.charCode <= 1113) || (event.charCode >= 1040 && event.charCode <= 1103) || (event.charCode == 100) || (event.charCode == 110) || (event.charCode == 272) || (event.charCode == 273) || (event.charCode == 268) || (event.charCode == 269) || (event.charCode == 262) || (event.charCode == 263) || (event.charCode == 352) || (event.charCode == 353) || (event.charCode == 381) || (event.charCode == 382)"
-          required>
-      </div>
+      <legend>Korak 1 od 5: Molimo vas da unesete vaše lične informacije</legend>
 
       <div class="input-group">
         <label for="broj_godina">Uzrast:</label>
-        <input type="number" id="broj_godina" name="broj_godina" min="18" max="99" required>
+        <input type="number" id="broj_godina" name="broj_godina" min="18" max="99" pattern="[0-9]*" required>
       </div>
 
       <div class="input-group">
@@ -111,9 +99,9 @@
 
     <!--Drugi set pitanja-->
     <fieldset>
-      <legend>Korak 2 od 5: Molimo vas da popunite vaše ocene u prvoj godini studija</legend>
+      <legend>Korak 2 od 5: Molimo vas da unesete vaše ocene u prvoj godini studija</legend>
       <div class="napomena-container">
-        *Napomena - studentima je dozvoljeno da unose informacije samo o ispitima koje su slušali.
+        *Napomena - studentima nije dozvoljeno da unose informacije o ispitima koje nisu slušali, ili koje su slušali unapred.
       </div>
 
       <div class="input-group">
@@ -125,7 +113,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -138,7 +126,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -151,7 +139,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -164,7 +152,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -177,7 +165,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -190,7 +178,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -203,7 +191,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -216,7 +204,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -229,7 +217,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -242,7 +230,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -255,7 +243,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -263,9 +251,9 @@
 
     <!--Treci set pitanja-->
     <fieldset>
-      <legend>Korak 3 od 5: Molimo vas da popunite vaše ocene u drugoj godini studija</legend>
+      <legend>Korak 3 od 5: Molimo vas da unesete vaše ocene u drugoj godini studija</legend>
       <div class="napomena-container">
-        *Napomena - studentima je dozvoljeno da unose informacije samo o ispitima koje su slušali.
+        *Napomena - studentima nije dozvoljeno da unose informacije o ispitima koje nisu slušali, ili koje su slušali unapred.
       </div>
 
       <div class="input-group">
@@ -277,7 +265,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -290,7 +278,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -303,7 +291,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -316,7 +304,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -329,7 +317,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -342,7 +330,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -355,7 +343,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -368,7 +356,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -381,7 +369,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -394,7 +382,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -407,7 +395,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -415,9 +403,9 @@
 
     <!--Cetvrti set pitanja-->
     <fieldset>
-      <legend>Korak 4 od 5: Molimo vas da popunite vaše ocene u trećoj godini studija</legend>
+      <legend>Korak 4 od 5: Molimo vas da unesete vaše ocene u trećoj godini studija</legend>
       <div class="napomena-container">
-        *Napomena - studentima je dozvoljeno da unose informacije samo o ispitima koje su slušali.
+        *Napomena - studentima nije dozvoljeno da unose informacije o ispitima koje nisu slušali, ili koje su slušali unapred.
       </div>
 
       <div class="input-group">
@@ -429,7 +417,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -442,7 +430,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -455,7 +443,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -468,7 +456,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -481,7 +469,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -494,7 +482,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -507,7 +495,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -520,7 +508,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -533,7 +521,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -546,7 +534,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="did_not_pass">Nisam položio</option>
+          <option value="did_not_pass">Nisam još položio</option>
         </select>
       </div>
 
@@ -559,7 +547,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -567,9 +555,9 @@
 
     <!--Peti set pitanja-->
     <fieldset>
-      <legend>Korak 5 od 5: Molimo vas da popunite vaše ocene u četvrtoj godini studija.</legend>
+      <legend>Korak 5 od 5: Molimo vas da unesete vaše ocene u četvrtoj godini studija.</legend>
       <div class="napomena-container">
-        *Napomena - studentima je dozvoljeno da unose informacije samo o ispitima koje su slušali.
+        *Napomena - studentima nije dozvoljeno da unose informacije o ispitima koje nisu slušali, ili koje su slušali unapred.
       </div>
 
       <div class="input-group">
@@ -581,7 +569,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -594,7 +582,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -607,7 +595,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -620,7 +608,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -633,7 +621,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -646,7 +634,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -659,7 +647,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -672,7 +660,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -685,7 +673,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -698,7 +686,7 @@
           <option value="8">8</option>
           <option value="7">7</option>
           <option value="6">6</option>
-          <option value="nije_polozen">Nisam položio</option>
+          <option value="nije_polozen">Nisam još položio</option>
         </select>
       </div>
 
@@ -707,7 +695,7 @@
         <select id="strucna_praksa" name="strucna_praksa" required>
           <option value="">--Izaberite--</option>
           <option value="odradjena">Odrađena</option>
-          <option value="nije_odbranjen">Nije odrađena</option>
+          <option value="nije_odbranjen">Nije još odrađena</option>
         </select>
       </div>
 
@@ -716,7 +704,7 @@
         <select id="zavrsni" name="zavrsni" required>
           <option value="">--Izaberite--</option>
           <option value="odbranjen">Odbranjen</option>
-          <option value="nije_odbranjen">Nije odbranjen</option>
+          <option value="nije_odbranjen">Nije još odbranjen</option>
         </select>
       </div>
 
