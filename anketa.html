@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="anketa.css">
+  <title>Anketa</title>
+</head>
+
+<body>
+  <form action="connect.php" method="POST" id="survey-form">
+    <div class="container">
+      <h2>Anketa za studente</h2>
+    </div>
+    <p>
+      Pozdrav svim studentima,<br><br>
+      U ime tima koji sprovodi ovu anketu, želimo da vam se zahvalimo na učešću u istraživanju, koje ima za cilj
+      prikupljanje osnovnih podataka o vašem studiranju.
+      Anketa je namenjena za prikupljanje informacija o vašem studiranju kako bismo bolje razumeli izazove sa kojima se
+      suočavate tokom studiranja.<br><br>
+      Obezbedili smo sigurno i poverljivo okruženje za prikupljanje podataka. Podaci koje prikupljamo biće obrađivani i
+      prikazani anonimno, bez otkrivanja bilo kojih
+      ličnih informacija o vama kao pojedincu. Podaci koje prikupljamo koristiće se isključivo u okviru istraživanja i
+      neće se koristiti u bilo koje druge svrhe.<br><br>
+      Na kraju istraživanja, rezultati će biti javno dostupni na GitHub sajtu, sa celokupnom dokumentacijom koja ide uz
+      projekat. Ovako je omogućeno svim zainteresovanim
+      stranama da učestvuju u procesu analize i interpretacije podataka.<br><br>
+      Još jednom, hvala vam što ste izdvojili vreme da popunite ovu anketu.
+      <div class="napomena-container">
+        <i>*Napomena - studentima je dozvoljeno da unose informacije samo o ispitima koje su slušali.</i>
+      </div>
+      <hr>
+    </p>
+
+    <fieldset>
+      <!--Prvi set pitanja-->
+      <legend>Korak 1 od 5: Molimo vas da popunite vaše lične informacije</legend>
+
+      <div class="input-group">
+        <label for="ime">Ime:</label>
+        <input type="text" id="ime" name="ime" required>
+      </div>
+
+      <div class="input-group">
+        <label for="broj_godina">Uzrast:</label>
+        <input type="number" id="broj_godina" name="broj_godina" min="18" max="99" required>
+      </div>
+
+      <div class="input-group">
+        <label for="godina_studija">Godina studija:</label>
+        <select id="godina_studija" name="godina_studija" required>
+          <option value="">--Izaberite--</option>
+          <option value="prva">Prva</option>
+          <option value="druga">Druga</option>
+          <option value="treca">Treća</option>
+          <option value="cetvrta">Četvrta</option>
+        </select>
+      </div>
+
+      <div class="radio-question">
+        <label for="pol">Pol:</label>
+        <div class="radio-option">
+          <input type="radio" id="muski" name="pol" value="muski" required>
+          <label for="muski">muški</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="zenski" name="pol" value="zenski" required>
+          <label for="zenski">ženski</label>
+        </div>
+      </div>
+
+      <div class="radio-question">
+        <label for="finansiranje">Finansiram se:</label>
+        <div class="radio-option">
+          <input type="radio" id="samostalno" name="finansiranje" value="samostalno" required>
+          <label for="samostalno">samostalno</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="budzet" name="finansiranje" value="budzet" required>
+          <label for="budzet">iz budžeta</label>
+        </div>
+      </div>
+
+      <div class="radio-question">
+        <label for="mesto_ucenja">Više učim:</label>
+        <div class="radio-option">
+          <input type="radio" id="kod_kuce" name="mesto_ucenja" value="kod_kuce" required>
+          <label for="kod_kuce">kod kuće</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="citaonica" name="mesto_ucenja" value="citaonica" required>
+          <label for="citaonica">u čitaonici</label>
+        </div>
+      </div>
+
+      <div class="radio-question">
+        <label for="organizacija">Učlanjen sam u studentsku organizaciju:</label>
+        <div class="radio-option">
+          <input type="radio" id="da" name="organizacija" value="da">
+          <label for="da">da</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="ne" name="organizacija" value="ne">
+          <label for="ne">ne</label>
+        </div>
+
+      </div>
+
+    </fieldset>
+
+    <!--Drugi set pitanja-->
+    <fieldset>
+      <legend>Korak 2 od 5: Molimo vas da popunite vaše ocene u prvoj godini studija</legend>
+
+      <div class="input-group">
+        <label for="m1">Mathematika 1:</label>
+        <select id="m1" name="m1" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="ekonomija">Ekonomija:</label>
+        <select id="ekonomija" name="ekonomija" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="menadzment">Menadžment:</label>
+        <select id="menadzment" name="menadzment" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="oikt">OIKT:</label>
+        <select id="oikt" name="oikt" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="soc_psih">Sociologija ili Psihologija:</label>
+        <select id="soc_psih" name="soc_psih" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="sj1">Strani jezik 1:</label>
+        <select id="sj1" name="sj1" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="m2">Matematika 2:</label>
+        <select id="m2" name="m2" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="p1">Programiranje 1:</label>
+        <select id="p1" name="p1" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="osn_org">Osnovi organizacije:</label>
+        <select id="osn_org" name="osn_org" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="ps">Proizvodni sistemi:</label>
+        <select id="ps" name="ps" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="uis">Uvod u informacione sisteme:</label>
+        <select id="uis" name="uis" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+    </fieldset>
+
+    <!--Treci set pitanja-->
+    <fieldset>
+      <legend>Korak 3 od 5: Molimo vas da popunite vaše ocene u drugoj godini studija</legend>
+
+      <div class="input-group">
+        <label for="aros">AROS:</label>
+        <select id="aros" name="aros" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="p2">Programiranje 2:</label>
+        <select id="p2" name="p2" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="m3">Matematika 3:</label>
+        <select id="m3" name="m3" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="marketing">Marketing:</label>
+        <select id="marketing" name="marketing" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="tv">Teorija verovatnoće:</label>
+        <select id="tv" name="tv" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="sj2">Strani jezik 2:</label>
+        <select id="sj2" name="sj2" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="spa">Strukture podataka i algoritmi:</label>
+        <select id="spa" name="spa" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="stat">Statistika:</label>
+        <select id="stat" name="stat" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="mtr">MTR:</label>
+        <select id="mtr" name="mtr" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="fmir">FMiR:</label>
+        <select id="fmir" name="fmir" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="dms_num">DMS ili Numerička analiza:</label>
+        <select id="dms_num" name="dms_num" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+    </fieldset>
+
+    <!--Cetvrti set pitanja-->
+    <fieldset>
+      <legend>Korak 4 od 5: Molimo vas da popunite vaše ocene u trećoj godini studija</legend>
+
+      <div class="input-group">
+        <label for="rmt">RMT:</label>
+        <select id="rmt" name="rmt" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="oi1">Operaciona istraživanja 1:</label>
+        <select id="oi1" name="oi1" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="ts">Teorija sistema:</label>
+        <select id="ts" name="ts" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="epos">EPOS:</label>
+        <select id="epos" name="epos" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="mljr_up">Menadžment ljudskih resursa ili Upravljanje projektima:</label>
+        <select id="mljr_up" name="mljr_up" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="oi2">Operaciona istraživanja 2:</label>
+        <select id="oi2" name="oi2" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="bp">Baze podataka:</label>
+        <select id="bp" name="bp" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="pj">Programski jezici:</label>
+        <select id="pj" name="pj" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="pois">POIS:</label>
+        <select id="pois" name="pois" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="mpp">MPP:</label>
+        <select id="mpp" name="mpp" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="did_not_pass">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="to_lins">Teorija odlučivanja ili Lins:</label>
+        <select id="to_lins" name="to_lins" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+    </fieldset>
+
+    <!--Peti set pitanja-->
+    <fieldset>
+      <legend>Korak 5 od 5: Molimo vas da popunite vaše ocene u četvrtoj godini studija.</legend>
+
+      <div class="input-group">
+        <label for="proj_is">Projektovanje informacionih sistema:</label>
+        <select id="proj_is" name="proj_is" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="int_tehn">Internet tehnologije:</label>
+        <select id="int_tehn" name="int_tehn" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="simulacije">Simulacija i simulacioni jezici:</label>
+        <select id="simulacije" name="simulacije" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="proj_soft">Projektovanje softvera:</label>
+        <select id="proj_soft" name="proj_soft" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="izborni_isit1">Izborni predmet ISiT-1:</label>
+        <select id="izborni_isit1" name="izborni_isit1" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="inteligentni_sistemi">Inteligentni sistemi:</label>
+        <select id="inteligentni_sistemi" name="inteligentni_sistemi" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="osn_kval">Osnove kvaliteta:</label>
+        <select id="osn_kval" name="osn_kval" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="izborni_isit2">Izborni predmet ISiT-2:</label>
+        <select id="izborni_isit2" name="izborni_isit2" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="izborni_isit3">Izborni predmet ISiT-3:</label>
+        <select id="izborni_isit3" name="izborni_isit3" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="izborni_isit4">Izborni predmet ISiT-4:</label>
+        <select id="izborni_isit4" name="izborni_isit4" required>
+          <option value="">--Izaberite--</option>
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="nije_polozen">Nisam položio</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="strucna_praksa">Stručna praksa:</label>
+        <select id="strucna_praksa" name="strucna_praksa" required>
+          <option value="">--Izaberite--</option>
+          <option value="odradjena">Odrađena</option>
+          <option value="nije_odbranjen">Nije odrađena</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="zavrsni">Završni rad:</label>
+        <select id="zavrsni" name="zavrsni" required>
+          <option value="">--Izaberite--</option>
+          <option value="odbranjen">Odbranjen</option>
+          <option value="nije_odbranjen">Nije odbranjen</option>
+        </select>
+      </div>
+
+    </fieldset>
+
+    <div class="progress">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" id="previous" onclick="previousStep()" style="display:none;">Prethodna</button>
+      <button type="button" id="next" onclick="nextStep()">Sledeća</button>
+      <button type="submit" id="submit" style="display:none;">Potvrdi</button>
+    </div>
+  </form>
+
+
+  <script>
+    // Uzimamo korak od svakog fieldset-a
+    const steps = document.querySelectorAll('fieldset');
+
+    // Uzimamo sledece, prethodno i submit dugme
+    const nextButton = document.getElementById('next');
+    const previousButton = document.getElementById('previous');
+    const submitButton = document.getElementById('submit');
+
+    // Pratimo trenutni korak
+    let currentStep = 0;
+
+    // Prikazujemo trenutni korak, sakrivamo ostale
+    function showStep(stepIndex) {
+      steps.forEach((step, index) => {
+        if (index === stepIndex) {
+          step.style.display = 'block';
+        } else {
+          step.style.display = 'none';
+        }
+      });
+
+      // Prikazujemo buttons u zavisnosti od koraka
+      if (stepIndex === 0) {
+        previousButton.style.display = 'none';
+        nextButton.style.display = 'block';
+        submitButton.style.display = 'none';
+      } else if (stepIndex === steps.length - 1) {
+        previousButton.style.display = 'block';
+        nextButton.style.display = 'none';
+        submitButton.style.display = 'block';
+      } else {
+        previousButton.style.display = 'block';
+        nextButton.style.display = 'block';
+        submitButton.style.display = 'none';
+      }
+
+      // Menjamo trenutni korak
+      currentStep = stepIndex;
+    }
+
+    showStep(currentStep);
+
+    const progressBar = document.querySelector('.progress-bar');
+    progressBar.style.width = '0%';
+
+    function updateProgressBar() {
+      // Povecavamo progress bar za 25%
+      const progressValue = (currentStep / (steps.length - 1)) * 100;
+      progressBar.style.width = `${progressValue}%`;
+    }
+
+    function decreaseProgressBar() {
+      var progressBar = document.querySelector(".progress-bar");
+      var progressValue = parseFloat(progressBar.style.width);
+
+      // Smanjujemo progress bar za 25%
+      progressValue -= 100 / (steps.length - 1);
+
+      progressBar.style.width = Math.max(progressValue, 0) + "%";
+    }
+
+    const godinaStudijaSelect = document.getElementById('godina_studija');
+    godinaStudijaSelect.addEventListener('change', function () {
+      const selectedValue = this.value;
+
+      switch (selectedValue) {
+        case 'prva':
+          disableInputs(2, 5);
+          break;
+        case 'druga':
+          enableInputs(2, 3);
+          disableInputs(3, 5);
+          break;
+        case 'treca':
+          enableInputs(2, 4);
+          disableInputs(4, 5);
+          break;
+        case 'cetvrta':
+          enableInputs(2, 5);
+          break;
+      }
+    });
+
+    // Disable odredjene inpute
+    function disableInputs(startIndex, endIndex) {
+      for (let i = startIndex; i < endIndex; i++) {
+        const inputs = steps[i].querySelectorAll('input, select');
+        inputs.forEach(input => {
+          input.setAttribute('disabled', true);
+        });
+      }
+    }
+
+    // Enable odredjene inpute
+    function enableInputs(startIndex, endIndex) {
+      for (let i = startIndex; i < endIndex; i++) {
+        const inputs = steps[i].querySelectorAll('input, select');
+        inputs.forEach(input => {
+          input.removeAttribute('disabled');
+        });
+      }
+    }
+
+    // U zavisnosti od izabrane godine, enableujemo/disableujemo input fields
+    const initialSelectedValue = godinaStudijaSelect.value;
+    switch (initialSelectedValue) {
+      case 'prva':
+        disableInputs(2, 5);
+        break;
+      case 'druga':
+        enableInputs(2, 3);
+        disableInputs(3, 5);
+        break;
+      case 'treca':
+        enableInputs(2, 4);
+        disableInputs(4, 5);
+        break;
+      case 'cetvrta':
+        enableInputs(2, 5);
+        break;
+    }
+
+    // Prelazimo na sledeci korak
+    function nextStep() {
+      if (currentStep < steps.length - 1 && !steps[currentStep + 1].hasAttribute('disabled')) {
+        showStep(currentStep + 1);
+        updateProgressBar();
+
+      }
+    }
+
+    // Vracamo se na prethodni korak
+    function previousStep() {
+      if (currentStep > 0) {
+        showStep(currentStep - 1);
+        decreaseProgressBar();
+      }
+    }
+
+    // Prilikom ucitavanja forme prikazujemo prvi korak
+    showStep(0);
+
+
+    // Cuvamo odgovore
+    function saveAnswer(element) {
+      const name = element.name;
+      const value = element.value;
+      answers[name] = value;
+    }
+
+    // Cuvamo odgovore za step
+    function restoreAnswers(step) {
+      const inputs = step.querySelectorAll('input, select');
+      inputs.forEach(input => {
+        const name = input.name;
+        if (name in answers) {
+          input.value = answers[name];
+        }
+      });
+    }
+
+    // Cuvamo podatke kad se promeni step
+    steps.forEach(step => {
+      const inputs = step.querySelectorAll('input, select');
+      inputs.forEach(input => {
+        input.addEventListener('change', event => {
+          saveAnswer(event.target);
+        });
+      });
+    });
+
+    // Prikazujemo sacuvane odgovore kad se vratimo na neki step
+    steps.forEach((step, index) => {
+      step.addEventListener('show', event => {
+        restoreAnswers(event.target);
+      });
+    });
+
+    submitButton.addEventListener('click', event => {
+      const allEnabledInputs = Array.from(document.querySelectorAll('input:not([disabled]), select:not([disabled])'));
+      const requiredEnabledInputs = allEnabledInputs.filter(input => input.hasAttribute('required'));
+
+      let isCurrentStepValid = true;
+      requiredEnabledInputs.forEach(input => {
+        if (!input.value) {
+          isCurrentStepValid = false;
+        }
+      });
+      if (!isCurrentStepValid) {
+        event.preventDefault();
+        alert('Molimo vas da popunite sva potrebna polja.');
+      } else{
+        alert('Uspešno ste popunili anketu!');
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>
