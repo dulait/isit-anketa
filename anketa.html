@@ -37,7 +37,9 @@
 
       <div class="input-group">
         <label for="ime">Ime i prezime:</label>
-        <input type="text" id="ime" name="ime" pattern="[A-Za-z ]+"required>
+        <input type="text" id="ime" name="ime" pattern="^[\p{L}\s]+$"
+          onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32) || (event.charCode >= 1025 && event.charCode <= 1113) || (event.charCode >= 1040 && event.charCode <= 1103) || (event.charCode == 100) || (event.charCode == 110) || (event.charCode == 272) || (event.charCode == 273) || (event.charCode == 268) || (event.charCode == 269) || (event.charCode == 262) || (event.charCode == 263) || (event.charCode == 352) || (event.charCode == 353) || (event.charCode == 381) || (event.charCode == 382)"
+          required>
       </div>
 
       <div class="input-group">
@@ -924,7 +926,7 @@
       if (!isCurrentStepValid) {
         event.preventDefault();
         alert('Molimo vas da popunite sva potrebna polja.');
-      } else{
+      } else {
         alert('Uspešno ste popunili anketu!');
       }
     });
