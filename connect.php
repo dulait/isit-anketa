@@ -5,13 +5,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
     // Podaci iz prvog koraka - Licne informacije
-    $ime = $_POST['ime'];
     $broj_godina = $_POST['broj_godina'];
-    $pol = $_POST['pol'];
+    $pol = isset($_POST['pol']) ? $_POST['pol'] : '';
     $godina_studija = $_POST['godina_studija'];
-    $finansiranje = $_POST['finansiranje'];
-    $mesto_ucenja = $_POST['mesto_ucenja'];
-    $organizacija = $_POST['organizacija'];
+    $finansiranje = isset($_POST['finansiranje']) ? $_POST['finansiranje'] : '';
+    $mesto_ucenja = isset($_POST['mesto_ucenja']) ? $_POST['mesto_ucenja'] : '';
+    $organizacija = isset($_POST['organizacija']) ? $_POST['organizacija'] : '';
 
     // Podaci iz drugog koraka - Ispiti iz prve godine
     $m1 = $_POST['m1'];
@@ -99,14 +98,14 @@ error_reporting(E_ALL);
     if ($conn->connect_error) {
         die('Connection Failed : '.$conn->connect_error);
     } else {
-        $stmt = $conn->prepare("insert into podaci(ime, broj_godina, pol, godina_studija, finansiranje, mesto_ucenja, organizacija,
+        $stmt = $conn->prepare("insert into student(broj_godina, pol, godina_studija, finansiranje, mesto_ucenja, organizacija,
                                 m1, ekonomija, menadzment, oikt, soc_psih, sj1, m2, p1, osn_org, ps, uis,
                                 aros, p2, m3, marketing, tv, sj2, spa, stat, mtr, fmir, dms_num,
                                 rmt, oi1, ts, epos, mljr_up, oi2, bp, pj, pois, mpp, to_lins,
                                 proj_is, int_tehn, simulacije, proj_soft, izborni_isit1, inteligentni_sistemi, osn_kval, izborni_isit2, izborni_isit3, izborni_isit4, strucna_praksa, zavrsni)
-                                values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if($stmt){
-            $stmt->bind_param("sisssssiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiss", $ime, $broj_godina, $pol, $godina_studija, $finansiranje, $mesto_ucenja, $organizacija, 
+            $stmt->bind_param("isssssiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiss", $broj_godina, $pol, $godina_studija, $finansiranje, $mesto_ucenja, $organizacija, 
                                                                                   $m1, $ekonomija, $menadzment, $oikt, $soc_psih, $sj1, $m2, $p1, $osn_org, $ps, $uis, 
                                                                                   $aros, $p2, $m3, $marketing, $tv, $sj2, $spa, $stat, $mtr, $fmir, $dms_num, 
                                                                                   $rmt, $oi1, $ts, $epos, $mljr_up, $oi2, $bp, $pj, $pois, $mpp, $to_lins, $proj_is, $int_tehn, 
@@ -116,11 +115,11 @@ error_reporting(E_ALL);
         if ($stmt->error) {
             echo "Error: " . $stmt->error;
         } else{
-            echo "Uspesno unosenje...";
+            echo "Uspešno unošenje! Možete zatvoriti ovaj prozor.";
         }
         $stmt->close();
     } else{
-        echo "Neuspesno unosenje...";
+        echo "Došlo je do greške prilikom unošenja, molimo Vas pokušajte ponovo.";
     }
         $conn->close();
     }
