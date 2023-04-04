@@ -4,13 +4,16 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+    // Datum
+    $current_date = date('Y-m-d H:i:s');
+
     // Podaci iz prvog koraka - Licne informacije
     $broj_godina = $_POST['broj_godina'];
-    $pol = isset($_POST['pol']) ? $_POST['pol'] : '';
+    $pol = $_POST['pol'] ?? '';
     $godina_studija = $_POST['godina_studija'];
-    $finansiranje = isset($_POST['finansiranje']) ? $_POST['finansiranje'] : '';
-    $mesto_ucenja = isset($_POST['mesto_ucenja']) ? $_POST['mesto_ucenja'] : '';
-    $organizacija = isset($_POST['organizacija']) ? $_POST['organizacija'] : '';
+    $finansiranje = $_POST['finansiranje'] ?? '';
+    $mesto_ucenja = $_POST['mesto_ucenja'] ?? '';
+    $organizacija = $_POST['organizacija'] ?? '';
 
     // Podaci iz drugog koraka - Ispiti iz prve godine
     $m1 = $_POST['m1'];
@@ -69,7 +72,7 @@ error_reporting(E_ALL);
     $ocene1 = array($m1, $ekonomija, $menadzment, $oikt, $soc_psih, $sj1, $m2, $p1, $osn_org, $ps, $uis);
     $ocene2 = array($aros, $p2, $m3, $marketing, $tv, $sj2, $spa, $stat, $mtr, $fmir, $dms_num);
     $ocene3 = array($rmt, $oi1, $ts, $epos, $mljr_up, $oi2, $bp, $pj, $pois, $mpp, $to_lins);
-    $ocene4 = array($proj_is, $int_tehn, $simulacije, $proj_soft, $izborni_isit1, $inteligentni_sistemi, $osn_kval, $izborni_isit2, $izborni_isit3, $izborni_isit4); //Bez strucne prakse i zavrsnog rada
+    $ocene4 = array($proj_is, $int_tehn, $simulacije, $proj_soft, $izborni_isit1, $inteligentni_sistemi, $osn_kval, $izborni_isit2, $izborni_isit3, $izborni_isit4, $strucna_praksa, $zavrsni); //Bez strucne prakse i zavrsnog rada
 
     // Prolazenje kroz svaki niz; i ukoliko je student izabrao opciju "Nisam polozio", ocena postaje -1
     foreach ($ocene1 as &$ocena) {
@@ -88,29 +91,29 @@ error_reporting(E_ALL);
         }
     }
     foreach ($ocene4 as &$ocena) {
-        if ($ocena === "Nisam položio") {
+        if ($ocena === "Nisam položio" || $ocena === "Nije još odrađena" || $ocena === "Nije još odbranjen") {
             $ocena = -1;
         }
     }
 
     // Konekcija sa bazom podataka
-    $conn = new mysqli('fdb1027.biz.nf', '4289994_anketa','dulesta10','4289994_anketa');
+    $conn = new mysqli('localhost', 'root', '', 'test');
     if ($conn->connect_error) {
         die('Connection Failed : '.$conn->connect_error);
     } else {
         $stmt = $conn->prepare("insert into student(broj_godina, pol, godina_studija, finansiranje, mesto_ucenja, organizacija,
-                                m1, ekonomija, menadzment, oikt, soc_psih, sj1, m2, p1, osn_org, ps, uis,
-                                aros, p2, m3, marketing, tv, sj2, spa, stat, mtr, fmir, dms_num,
-                                rmt, oi1, ts, epos, mljr_up, oi2, bp, pj, pois, mpp, to_lins,
-                                proj_is, int_tehn, simulacije, proj_soft, izborni_isit1, inteligentni_sistemi, osn_kval, izborni_isit2, izborni_isit3, izborni_isit4, strucna_praksa, zavrsni)
-                                values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        m1, ekonomija, menadzment, oikt, soc_psih, sj1, m2, p1, osn_org, ps, uis,
+                        aros, p2, m3, marketing, tv, sj2, spa, stat, mtr, fmir, dms_num,
+                        rmt, oi1, ts, epos, mljr_up, oi2, bp, pj, pois, mpp, to_lins,
+                        proj_is, int_tehn, simulacije, proj_soft, izborni_isit1, inteligentni_sistemi, osn_kval, izborni_isit2, izborni_isit3, izborni_isit4, strucna_praksa, zavrsni, inserted_at)
+                        values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if($stmt){
-            $stmt->bind_param("isssssiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiss", $broj_godina, $pol, $godina_studija, $finansiranje, $mesto_ucenja, $organizacija, 
-                                                                                  $m1, $ekonomija, $menadzment, $oikt, $soc_psih, $sj1, $m2, $p1, $osn_org, $ps, $uis, 
-                                                                                  $aros, $p2, $m3, $marketing, $tv, $sj2, $spa, $stat, $mtr, $fmir, $dms_num, 
-                                                                                  $rmt, $oi1, $ts, $epos, $mljr_up, $oi2, $bp, $pj, $pois, $mpp, $to_lins, $proj_is, $int_tehn, 
-                                                                                  $simulacije, $proj_soft, $izborni_isit1, $inteligentni_sistemi, $osn_kval, $izborni_isit2, $izborni_isit3, 
-                                                                                  $izborni_isit4, $strucna_praksa, $zavrsni);
+            $stmt->bind_param("isssssiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiis", $broj_godina, $pol, $godina_studija, $finansiranje, $mesto_ucenja, $organizacija, 
+                                                                                        $m1, $ekonomija, $menadzment, $oikt, $soc_psih, $sj1, $m2, $p1, $osn_org, $ps, $uis, 
+                                                                                        $aros, $p2, $m3, $marketing, $tv, $sj2, $spa, $stat, $mtr, $fmir, $dms_num, 
+                                                                                        $rmt, $oi1, $ts, $epos, $mljr_up, $oi2, $bp, $pj, $pois, $mpp, $to_lins, $proj_is, $int_tehn, 
+                                                                                        $simulacije, $proj_soft, $izborni_isit1, $inteligentni_sistemi, $osn_kval, $izborni_isit2, $izborni_isit3, 
+                                                                                        $izborni_isit4, $strucna_praksa, $zavrsni, $current_date);
         $stmt->execute();
         if ($stmt->error) {
             echo "Error: " . $stmt->error;
@@ -119,7 +122,7 @@ error_reporting(E_ALL);
         }
         $stmt->close();
     } else{
-        echo "Došlo je do greške prilikom unošenja, molimo Vas pokušajte ponovo.";
+        echo "Došlo je do greške prilikom unošenja: (" . $conn->errno . ") " . $conn->error;
     }
         $conn->close();
     }
