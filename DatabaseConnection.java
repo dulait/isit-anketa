@@ -281,7 +281,6 @@ public class DatabaseConnection {
 
 		int[][] yearExamIndices = { { 0, 10 }, { 11, 21 }, { 22, 32 }, { 33, 42 } };
 
-		// Iterate through the 4 years
 		for (int i = 0; i < 4; i++) {
 			Map<Integer, Double> averageGradeByExam = calculateAverageGradeByExam(students, yearExamIndices[i][0],
 					yearExamIndices[i][1]);
